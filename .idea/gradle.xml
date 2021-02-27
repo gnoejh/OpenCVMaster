@@ -13,6 +13,10 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/openCVLibrary342" />
+            <option value="$PROJECT_DIR$/openCVSample15puzzle" />
+            <option value="$PROJECT_DIR$/openCVTutorial1CameraPreview" />
+            <option value="$PROJECT_DIR$/openCVTutorial2MixedProcessing" />
+            <option value="$PROJECT_DIR$/openCVTutorial3CameraControl" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

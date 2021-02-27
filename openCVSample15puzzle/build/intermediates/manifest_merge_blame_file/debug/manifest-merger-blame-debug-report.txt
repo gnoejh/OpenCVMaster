@@ -1,0 +1,76 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="org.opencv.samples.puzzle15"
+4    android:versionCode="301"
+5    android:versionName="3.01" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="23"
+8-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="30" />
+9-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.CAMERA" />
+11-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:27:5-64
+11-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:27:22-62
+12
+13    <uses-feature
+13-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:29:5-84
+14        android:name="android.hardware.camera"
+14-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:29:19-57
+15        android:required="false" />
+15-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:29:58-82
+16    <uses-feature
+16-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:30:5-94
+17        android:name="android.hardware.camera.autofocus"
+17-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:30:19-67
+18        android:required="false" />
+18-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:30:68-92
+19    <uses-feature
+19-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:31:5-90
+20        android:name="android.hardware.camera.front"
+20-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:31:19-63
+21        android:required="false" />
+21-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:31:64-88
+22    <uses-feature
+22-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:32:5-100
+23        android:name="android.hardware.camera.front.autofocus"
+23-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:32:19-73
+24        android:required="false" />
+24-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:32:74-98
+25
+26    <application
+26-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:8:5-25:19
+27        android:debuggable="true"
+28        android:extractNativeLibs="false"
+29        android:icon="@drawable/icon"
+29-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:9:9-38
+30        android:label="@string/app_name"
+30-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:10:9-41
+31        android:testOnly="true"
+32        android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+32-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:11:9-67
+33        <activity
+33-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:13:9-24:20
+34            android:name="org.opencv.samples.puzzle15.Puzzle15Activity"
+34-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:14:13-45
+35            android:configChanges="keyboardHidden|orientation"
+35-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:17:13-63
+36            android:label="@string/app_name"
+36-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:15:13-45
+37            android:screenOrientation="landscape" >
+37-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:16:13-50
+38            <intent-filter>
+38-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:19:13-23:29
+39                <action android:name="android.intent.action.MAIN" />
+39-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:20:17-69
+39-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:20:25-66
+40
+41                <category android:name="android.intent.category.LAUNCHER" />
+41-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:22:17-77
+41-->W:\iutandroid\GitOpenCV\OpenCVSamples\openCVSample15puzzle\src\main\AndroidManifest.xml:22:27-74
+42            </intent-filter>
+43        </activity>
+44    </application>
+45
+46</manifest>

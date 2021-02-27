@@ -1,0 +1,7 @@
+org/opencv/samples/puzzle15/BuildConfig.java
+ org.opencv.samples.puzzle15.BuildConfig
+org/opencv/samples/puzzle15/Puzzle15Processor.java
+ org.opencv.samples.puzzle15.Puzzle15Processor
+org/opencv/samples/puzzle15/Puzzle15Activity.java
+ org.opencv.samples.puzzle15.Puzzle15Activity
+ org.opencv.samples.puzzle15.Puzzle15Activity$1
