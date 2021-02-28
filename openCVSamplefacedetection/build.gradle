@@ -5,9 +5,13 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "org.opencv.samples.puzzle15"
+        applicationId "org.opencv.samples.facedetect"
         minSdkVersion 23
         targetSdkVersion 30
+
+        ndk {
+            moduleName "detection_based_tracker"
+        }
     }
 
     buildTypes {

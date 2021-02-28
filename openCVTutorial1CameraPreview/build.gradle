@@ -19,5 +19,5 @@ android {
 }
 
 dependencies {
-    compile project(':openCVLibrary342')
+    implementation project(':openCVLibrary342')
 }

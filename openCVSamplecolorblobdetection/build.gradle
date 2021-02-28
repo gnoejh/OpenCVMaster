@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
-
+// 11 30.0.3 23 30
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "org.opencv.samples.puzzle15"
+        applicationId "org.opencv.samples.colorblobdetect"
         minSdkVersion 23
         targetSdkVersion 30
     }
