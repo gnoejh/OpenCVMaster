@@ -14,13 +14,13 @@ import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Mat;
 
-//TODO
+//TODO create camera interface
 public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
 
     private static String TAG = "MainActivity";
     private CameraBridgeViewBase mOpenCvCameraView;
 
-
+//TODO activate opencv manager
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
         public void onManagerConnected(int status) {
@@ -41,10 +41,11 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     @Override
     public void onResume() {
         super.onResume();
-//        TODO add OpenCVLoader.OPENCV_VERSION_3_4_2
+//        TODO add OpenCVLoader.OPENCV_VERSION_3_4_2 file must be maintained with correction
         OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_4_2, this, mLoaderCallback);
     }
 
+//TODO expand frame on layout frame
     @Override
     public void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "called onCreate");
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
     public void onCameraViewStopped() {
     }
-
+//TODO actual processing
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         return inputFrame.rgba();
     }
