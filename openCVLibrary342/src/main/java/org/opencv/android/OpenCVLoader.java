@@ -92,10 +92,10 @@ public class OpenCVLoader
      */
     public static final String OPENCV_VERSION_3_4_0 = "3.4.0";
 
-    /**
-     * Current OpenCV Library version
+    /** TODO
+     * Current OpenCV Library 3.4.2.
      */
-    public static final String OPENCV_VERSION = "3.4.2";
+    public static final String OPENCV_VERSION_3_4_2 = "3.4.2";
 
 
     /**
