@@ -1,3 +1,11 @@
 include ':app'
 rootProject.name = "OpenCVProject"
 include ':openCVLibrary342'
+include ':openCVTutorial1CameraPreview'
+include ':openCVTutorial2MixedProcessing'
+include ':openCVTutorial3CameraControl'
+include ':openCVSample15puzzle'
+include ':openCVSampleimagemanipulations'
+include ':openCVSamplecameracalibration'
+include ':openCVSamplecolorblobdetection'
+include ':openCVSamplefacedetection'
