@@ -114,13 +114,13 @@ public class ImageManipulationsActivity extends Activity implements CvCameraView
         super.onResume();
         if (!OpenCVLoader.initDebug()) {
             Log.d(TAG, "Internal OpenCV library not found. Using OpenCV Manager for initialization");
-            OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION, this, mLoaderCallback);
+            OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_4_2, this, mLoaderCallback);
         } else {
             Log.d(TAG, "OpenCV library found inside package. Using it!");
             mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
         }
     }
-
+    @Override
     public void onDestroy() {
         super.onDestroy();
         if (mOpenCvCameraView != null)
@@ -162,7 +162,7 @@ public class ImageManipulationsActivity extends Activity implements CvCameraView
             viewMode = VIEW_MODE_POSTERIZE;
         return true;
     }
-
+    @Override
     public void onCameraViewStarted(int width, int height) {
         mIntermediateMat = new Mat();
         mSize0 = new Size();
@@ -190,7 +190,7 @@ public class ImageManipulationsActivity extends Activity implements CvCameraView
         mSepiaKernel.put(2, 0, /* B */0.131f, 0.534f, 0.272f, 0f);
         mSepiaKernel.put(3, 0, /* A */0.000f, 0.000f, 0.000f, 1f);
     }
-
+    @Override
     public void onCameraViewStopped() {
         // Explicitly deallocate Mats
         if (mIntermediateMat != null)
@@ -198,7 +198,7 @@ public class ImageManipulationsActivity extends Activity implements CvCameraView
 
         mIntermediateMat = null;
     }
-
+    @Override
     public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
         Mat rgba = inputFrame.rgba();
         Size sizeRgba = rgba.size();

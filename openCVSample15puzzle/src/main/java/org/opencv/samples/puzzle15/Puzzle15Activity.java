@@ -113,6 +113,7 @@ public class Puzzle15Activity extends Activity implements CvCameraViewListener, 
         return true;
     }
 
+    @Override
     public void onCameraViewStarted(int width, int height) {
         mGameWidth = width;
         mGameHeight = height;

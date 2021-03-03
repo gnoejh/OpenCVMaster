@@ -97,18 +97,19 @@ public class Tutorial3Activity extends Activity implements CvCameraViewListener2
         }
     }
 
+    @Override
     public void onDestroy() {
         super.onDestroy();
         if (mOpenCvCameraView != null)
             mOpenCvCameraView.disableView();
     }
-
+    @Override
     public void onCameraViewStarted(int width, int height) {
     }
-
+    @Override
     public void onCameraViewStopped() {
     }
-
+    @Override
     public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
         return inputFrame.rgba();
     }

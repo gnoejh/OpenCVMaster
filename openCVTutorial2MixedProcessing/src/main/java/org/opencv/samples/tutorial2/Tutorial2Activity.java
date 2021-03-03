@@ -102,31 +102,35 @@ public class Tutorial2Activity extends Activity implements CvCameraViewListener2
         if (!OpenCVLoader.initDebug()) {
             Log.d(TAG, "Internal OpenCV library not found. Using OpenCV Manager for initialization");
 //            TODO opencv_version
-            OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION, this, mLoaderCallback);
+            OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_4_2, this, mLoaderCallback);
         } else {
             Log.d(TAG, "OpenCV library found inside package. Using it!");
             mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
         }
     }
 
+    @Override
     public void onDestroy() {
         super.onDestroy();
         if (mOpenCvCameraView != null)
             mOpenCvCameraView.disableView();
     }
 
+    @Override
     public void onCameraViewStarted(int width, int height) {
         mRgba = new Mat(height, width, CvType.CV_8UC4);
         mIntermediateMat = new Mat(height, width, CvType.CV_8UC4);
         mGray = new Mat(height, width, CvType.CV_8UC1);
     }
 
+    @Override
     public void onCameraViewStopped() {
         mRgba.release();
         mGray.release();
         mIntermediateMat.release();
     }
 
+    @Override
     public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
         final int viewMode = mViewMode;
         switch (viewMode) {
@@ -155,6 +159,7 @@ public class Tutorial2Activity extends Activity implements CvCameraViewListener2
         return mRgba;
     }
 
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Log.i(TAG, "called onOptionsItemSelected; selected item: " + item);
 
@@ -170,6 +175,7 @@ public class Tutorial2Activity extends Activity implements CvCameraViewListener2
 
         return true;
     }
+
 
     public native void FindFeatures(long matAddrGr, long matAddrRgba);
 }

@@ -191,7 +191,7 @@ public class CameraCalibrationActivity extends Activity implements CvCameraViewL
             return super.onOptionsItemSelected(item);
         }
     }
-
+    @Override
     public void onCameraViewStarted(int width, int height) {
         if (mWidth != width || mHeight != height) {
             mWidth = width;
@@ -204,7 +204,7 @@ public class CameraCalibrationActivity extends Activity implements CvCameraViewL
             mOnCameraFrameRender = new OnCameraFrameRender(new CalibrationFrameRender(mCalibrator));
         }
     }
-
+    @Override
     public void onCameraViewStopped() {
     }
 
