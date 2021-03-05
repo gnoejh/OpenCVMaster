@@ -1,4 +1,4 @@
-include ':app'
+include ':openCVCamera'
 rootProject.name = "OpenCVProject"
 include ':openCVLibrary342'
 include ':openCVTutorial1CameraPreview'

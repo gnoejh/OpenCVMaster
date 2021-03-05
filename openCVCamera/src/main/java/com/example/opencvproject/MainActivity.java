@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     }
 //TODO actual processing
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
+
         return inputFrame.rgba();
     }
 }
