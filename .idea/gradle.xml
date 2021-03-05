@@ -12,6 +12,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/openCVCamera" />
+            <option value="$PROJECT_DIR$/openCVImageprocessing" />
             <option value="$PROJECT_DIR$/openCVLibrary342" />
             <option value="$PROJECT_DIR$/openCVSample15puzzle" />
             <option value="$PROJECT_DIR$/openCVSamplecameracalibration" />
