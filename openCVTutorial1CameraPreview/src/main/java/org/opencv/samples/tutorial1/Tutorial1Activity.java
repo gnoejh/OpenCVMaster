@@ -96,6 +96,9 @@ public class Tutorial1Activity extends Activity implements CvCameraViewListener2
     }
 
     public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
+
+
+
         return inputFrame.rgba();
     }
 }
