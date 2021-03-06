@@ -41,8 +41,18 @@ public class MainActivity extends AppCompatActivity {
         Imgproc.cvtColor(img, img, Imgproc.COLOR_RGB2BGRA);
 
         Mat img_result = img.clone();
-        Size size = new Size(3,10);
-        Imgproc.blur(img, img_result, size);
+        Size size = new Size(5,5);
+
+        // Blur
+        //Imgproc.blur(img, img_result, size);
+        // Gaussian blur
+        Imgproc.GaussianBlur(img, img_result, size, 10, 3);
+        // Median blur
+        //Imgproc.medianBlur(img, img_result, 1);
+        //  Bilateral blur
+//        TODO
+        //Imgproc.bilateralFilter(img, img_result, 10, 20, 5);
+
         Bitmap img_bitmap = Bitmap.createBitmap(img_result.cols(), img_result.rows(),Bitmap.Config.ARGB_8888);
         Utils.matToBitmap(img_result, img_bitmap);
         ImageView imageView = findViewById(R.id.id_image);
