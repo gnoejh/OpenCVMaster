@@ -11,6 +11,8 @@ import android.widget.Toast;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.android.Utils;
 import org.opencv.core.Mat;
+import org.opencv.core.Point;
+import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
 import java.io.IOException;
@@ -27,17 +29,27 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void convertImage(View v){
+        // Input
         Mat img = null;
         try {
             img = Utils.loadResource(getApplicationContext(), R.drawable.lena);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         Imgproc.cvtColor(img, img, Imgproc.COLOR_RGB2BGRA);
-
         Mat img_result = img.clone();
-        Imgproc.Canny(img, img_result, 80, 90);
+
+        // structures
+        Mat element =  Imgproc.getStructuringElement(Imgproc.MORPH_RECT,
+                new Size(1,2),
+                new Point(0,0 ) );
+
+        // erosion
+        Imgproc.erode(img, img_result, element);
+        // dilate
+        Imgproc.dilate(img, img_result, element);
+
+        // Output
         Bitmap img_bitmap = Bitmap.createBitmap(img_result.cols(), img_result.rows(),Bitmap.Config.ARGB_8888);
         Utils.matToBitmap(img_result, img_bitmap);
         ImageView imageView = findViewById(R.id.id_image);
