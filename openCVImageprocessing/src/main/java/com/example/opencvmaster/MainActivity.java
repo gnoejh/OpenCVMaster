@@ -1,3 +1,6 @@
+// OpenCV Tutorial
+// https://docs.opencv.org/2.4/doc/tutorials/tutorials.html
+
 package com.example.opencvmaster;
 
 import androidx.appcompat.app.AppCompatActivity;
