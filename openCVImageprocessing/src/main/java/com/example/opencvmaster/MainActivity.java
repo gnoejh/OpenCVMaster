@@ -17,6 +17,7 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static String TAG = "MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,9 +25,8 @@ public class MainActivity extends AppCompatActivity {
         OpenCVLoader.initDebug();
     }
 
-//    TODO
+
     public void convertImage(View v){
-//        Toast.makeText(this, "sfsfs", Toast.LENGTH_LONG).show();
         Mat img = null;
         try {
             img = Utils.loadResource(getApplicationContext(), R.drawable.lena);

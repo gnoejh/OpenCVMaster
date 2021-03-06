@@ -1,7 +1,6 @@
-include ':openCVTest'
+rootProject.name = "OpenCVProject"
 include ':openCVImageprocessing'
 include ':openCVCamera'
-rootProject.name = "OpenCVProject"
 include ':openCVLibrary342'
 include ':openCVTutorial1CameraPreview'
 include ':openCVTutorial2MixedProcessing'
