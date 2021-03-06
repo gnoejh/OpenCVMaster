@@ -1,3 +1,5 @@
+// Image processing template
+
 // OpenCV Tutorial
 // https://docs.opencv.org/2.4/doc/tutorials/tutorials.html
 
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void convertImage(View v){
+        // Input
         Mat img = null;
         try {
             img = Utils.loadResource(getApplicationContext(), R.drawable.lena);
@@ -40,7 +43,12 @@ public class MainActivity extends AppCompatActivity {
         Imgproc.cvtColor(img, img, Imgproc.COLOR_RGB2BGRA);
 
         Mat img_result = img.clone();
+
+        // Image processing
         Imgproc.Canny(img, img_result, 80, 90);
+
+
+        // Output
         Bitmap img_bitmap = Bitmap.createBitmap(img_result.cols(), img_result.rows(),Bitmap.Config.ARGB_8888);
         Utils.matToBitmap(img_result, img_bitmap);
         ImageView imageView = findViewById(R.id.id_image);
