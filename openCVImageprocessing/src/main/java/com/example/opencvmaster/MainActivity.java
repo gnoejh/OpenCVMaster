@@ -1,3 +1,6 @@
+// Edge detection
+// https://docs.opencv.org/2.4/doc/tutorials/imgproc/table_of_content_imgproc/table_of_content_imgproc.html#table-of-content-imgproc
+
 package com.example.opencvmaster;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.example.opencvmaster.R;
 
 import org.opencv.android.OpenCVLoader;
 import org.opencv.android.Utils;
