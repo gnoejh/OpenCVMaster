@@ -1,3 +1,6 @@
+// Smoothing Images
+// https://docs.opencv.org/2.4/doc/tutorials/imgproc/gausian_median_blur_bilateral_filter/gausian_median_blur_bilateral_filter.html#smoothing
+
 package com.example.opencvmaster;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +14,7 @@ import android.widget.Toast;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.android.Utils;
 import org.opencv.core.Mat;
+import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
 import java.io.IOException;
@@ -37,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
         Imgproc.cvtColor(img, img, Imgproc.COLOR_RGB2BGRA);
 
         Mat img_result = img.clone();
-        Imgproc.Canny(img, img_result, 80, 90);
+        Size size = new Size(3,10);
+        Imgproc.blur(img, img_result, size);
         Bitmap img_bitmap = Bitmap.createBitmap(img_result.cols(), img_result.rows(),Bitmap.Config.ARGB_8888);
         Utils.matToBitmap(img_result, img_bitmap);
         ImageView imageView = findViewById(R.id.id_image);
         imageView.setImageBitmap(img_bitmap);
     }
-
 }
