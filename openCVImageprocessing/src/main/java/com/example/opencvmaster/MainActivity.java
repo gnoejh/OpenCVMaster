@@ -1,3 +1,6 @@
+// Eroding and Dilating
+// https://docs.opencv.org/2.4/doc/tutorials/imgproc/erosion_dilatation/erosion_dilatation.html#morphology-1
+
 package com.example.opencvmaster;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,15 +42,18 @@ public class MainActivity extends AppCompatActivity {
         Imgproc.cvtColor(img, img, Imgproc.COLOR_RGB2BGRA);
         Mat img_result = img.clone();
 
-        // structures
-        Mat element =  Imgproc.getStructuringElement(Imgproc.MORPH_RECT,
-                new Size(1,2),
-                new Point(0,0 ) );
+        //Imgproc.Canny(img, img_result, 80, 90);
 
-        // erosion
+        // structures
+
+        Size size = new Size(10,2);
+        Mat element =  Imgproc.getStructuringElement(Imgproc.MORPH_RECT,
+               size);
+
+//        // erosion
         Imgproc.erode(img, img_result, element);
-        // dilate
-        Imgproc.dilate(img, img_result, element);
+//        // dilate
+//        Imgproc.dilate(img, img_result, element);
 
         // Output
         Bitmap img_bitmap = Bitmap.createBitmap(img_result.cols(), img_result.rows(),Bitmap.Config.ARGB_8888);
