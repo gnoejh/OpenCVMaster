@@ -15,6 +15,10 @@ import org.opencv.imgproc.Imgproc;
 
 import java.io.IOException;
 
+import static org.opencv.core.CvType.CV_16S;
+import static org.opencv.core.CvType.CV_32SC4;
+import static org.opencv.core.CvType.CV_8U;
+
 public class MainActivity extends AppCompatActivity {
 
     private static String TAG = "MainActivity";
@@ -27,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void convertImage(View v){
+        // Input
         Mat img = null;
         try {
             img = Utils.loadResource(getApplicationContext(), R.drawable.lena);
@@ -37,7 +42,17 @@ public class MainActivity extends AppCompatActivity {
         Imgproc.cvtColor(img, img, Imgproc.COLOR_RGB2BGRA);
 
         Mat img_result = img.clone();
+
+
+        // Processing
+        // Canny edge detector
         Imgproc.Canny(img, img_result, 80, 90);
+        // Sobel edge detector
+        //TODO
+        // Imgproc.Sobel(img, img_result,CV_32SC4, 1, 1);
+
+
+        // Output
         Bitmap img_bitmap = Bitmap.createBitmap(img_result.cols(), img_result.rows(),Bitmap.Config.ARGB_8888);
         Utils.matToBitmap(img_result, img_bitmap);
         ImageView imageView = findViewById(R.id.id_image);
