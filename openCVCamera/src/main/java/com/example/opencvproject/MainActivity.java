@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.SurfaceView;
 import android.view.WindowManager;
 
@@ -13,14 +14,55 @@ import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfFloat;
+import org.opencv.core.MatOfInt;
+import org.opencv.core.Point;
+import org.opencv.core.Scalar;
+import org.opencv.core.Size;
+import org.opencv.imgproc.Imgproc;
 
 //TODO create camera interface
 public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
 
     private static String TAG = "MainActivity";
     private CameraBridgeViewBase mOpenCvCameraView;
+    public static final int      VIEW_MODE_RGBA      = 0;
+    public static final int      VIEW_MODE_HIST      = 1;
+    public static final int      VIEW_MODE_CANNY     = 2;
+    public static final int      VIEW_MODE_SEPIA     = 3;
+    public static final int      VIEW_MODE_SOBEL     = 4;
+    public static final int      VIEW_MODE_ZOOM      = 5;
+    public static final int      VIEW_MODE_PIXELIZE  = 6;
+    public static final int      VIEW_MODE_POSTERIZE = 7;
 
-//TODO activate opencv manager
+    private MenuItem mItemPreviewRGBA;
+    private MenuItem             mItemPreviewHist;
+    private MenuItem             mItemPreviewCanny;
+    private MenuItem             mItemPreviewSepia;
+    private MenuItem             mItemPreviewSobel;
+    private MenuItem             mItemPreviewZoom;
+    private MenuItem             mItemPreviewPixelize;
+    private MenuItem             mItemPreviewPosterize;
+
+    private Size                 mSize0;
+
+    private Mat                  mIntermediateMat;
+    private Mat                  mMat0;
+    private MatOfInt mChannels[];
+    private MatOfInt             mHistSize;
+    private int                  mHistSizeNum = 25;
+    private MatOfFloat mRanges;
+    private Scalar mColorsRGB[];
+    private Scalar               mColorsHue[];
+    private Scalar               mWhilte;
+    private Point mP1;
+    private Point                mP2;
+    private float                mBuff[];
+    private Mat                  mSepiaKernel;
+
+    public static int           viewMode = VIEW_MODE_RGBA;
+
+    //TODO activate opencv manager
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
         public void onManagerConnected(int status) {
@@ -79,7 +121,11 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     }
 //TODO actual processing
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
+        Mat result = new Mat();
+        Mat rgba = inputFrame.rgba();
+        Imgproc.Canny(rgba, result, 80, 100);
+        Imgproc.cvtColor(result, rgba, Imgproc.COLOR_GRAY2BGRA);
 
-        return inputFrame.rgba();
+        return rgba;
     }
 }
