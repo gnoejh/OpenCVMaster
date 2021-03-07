@@ -1,3 +1,5 @@
+// Master file
+
 package com.example.opencvproject;
 
 import androidx.appcompat.app.AppCompatActivity;
