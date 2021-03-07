@@ -265,6 +265,11 @@ public class ImageManipulationsActivity extends Activity implements CvCameraView
             Imgproc.cvtColor(mIntermediateMat, rgbaInnerWindow, Imgproc.COLOR_GRAY2BGRA, 4);
             rgbaInnerWindow.release();
             break;
+//            rgbaInnerWindow = rgba.submat(top, top + height, left, left + width);
+//            Imgproc.Canny(rgba, mIntermediateMat, 80, 90);
+//            Imgproc.cvtColor(mIntermediateMat, rgba, Imgproc.COLOR_GRAY2BGRA, 4);
+//            rgbaInnerWindow.release();
+//            break;
 
         case ImageManipulationsActivity.VIEW_MODE_SOBEL:
             Mat gray = inputFrame.gray();

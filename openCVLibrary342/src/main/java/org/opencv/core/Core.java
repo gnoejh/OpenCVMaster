@@ -2042,7 +2042,7 @@ public class Core {
     //
 
     //javadoc: randu(dst, low, high)
-    public static void randu(Mat dst, double low, double high)
+    public static void randu(Mat dst, int low, int high)
     {
         
         randu_0(dst.nativeObj, low, high);
