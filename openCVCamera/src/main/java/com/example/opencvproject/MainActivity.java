@@ -13,6 +13,8 @@ import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.core.Core;
+import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfFloat;
 import org.opencv.core.MatOfInt;
@@ -119,12 +121,23 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
     public void onCameraViewStopped() {
     }
-//TODO actual processing
+
+    @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         Mat result = new Mat();
         Mat rgba = inputFrame.rgba();
-        Imgproc.Canny(rgba, result, 80, 100);
-        Imgproc.cvtColor(result, rgba, Imgproc.COLOR_GRAY2BGRA);
+        Mat gray = inputFrame.gray();
+
+        //Canny
+//        Imgproc.Canny(gray, result, 80, 100);
+
+        // Sobel
+        Imgproc.Sobel(gray, result, CvType.CV_8U,1,1);
+
+
+        //gray to color
+        Core.convertScaleAbs(result, result, 10, 0);
+        Imgproc.cvtColor(result, rgba, Imgproc.COLOR_GRAY2BGRA,4);
 
         return rgba;
     }

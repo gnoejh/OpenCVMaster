@@ -9,19 +9,17 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
-
-import com.example.opencvmaster.R;
 
 import org.opencv.android.OpenCVLoader;
 import org.opencv.android.Utils;
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
 
 import java.io.IOException;
 
+import static org.opencv.android.Utils.loadResource;
 import static org.opencv.core.CvType.CV_16S;
-import static org.opencv.core.CvType.CV_32SC4;
 import static org.opencv.core.CvType.CV_8U;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void convertImage(View v){
+    public Mat convertImage(View v){
+        Mat result = new Mat();
+        Mat gray = new Mat();
 
         // Input
         Mat img = null;
@@ -45,25 +45,25 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-//        Imgproc.cvtColor(img, img, Imgproc.COLOR_RGB2BGRA);
-        Imgproc.cvtColor(img, img, Imgproc.COLOR_RGB2GRAY);
-        Mat img_result = img.clone();
+        // Gray image
+        Imgproc.cvtColor(img, gray, Imgproc.COLOR_RGB2GRAY);
 
-
-        // Processing
         // Canny edge detector
-//        Imgproc.Canny(img, img_result, 80, 90);
+        Imgproc.Canny(gray, result, 80, 90);
+
         // Sobel edge detector
-        //TODO
-//         Imgproc.Sobel(img, img_result, CV_16S, 1, 0);
+//        Imgproc.Sobel(gray, result, CV_8U, 1, 0);
 
 
         // Output
-//        Bitmap img_bitmap = Bitmap.createBitmap(img_result.cols(), img_result.rows(),Bitmap.Config.ARGB_8888);
-//        Bitmap img_bitmap = Bitmap.createBitmap(img_result.cols(), img_result.rows(),Bitmap.Config.ARGB_8888);
-//        Utils.matToBitmap(img_result, img_bitmap);
-//        ImageView imageView = findViewById(R.id.id_image);
-//        imageView.setImageBitmap(img);
+        Core.convertScaleAbs(result, result, 10, 0);
+        Bitmap img_bitmap = Bitmap.createBitmap(result.cols(), result.rows(),Bitmap.Config.ARGB_8888);
+        Utils.matToBitmap(result, img_bitmap);
+        ImageView imageView = findViewById(R.id.id_image);
+        imageView.setImageBitmap(img_bitmap);
+
+        return null;
     }
+
 
 }
