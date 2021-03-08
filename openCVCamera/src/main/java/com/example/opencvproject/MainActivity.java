@@ -13,6 +13,7 @@ import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Mat;
+import org.opencv.imgproc.Imgproc;
 
 //TODO create camera interface
 public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
@@ -77,9 +78,11 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
     public void onCameraViewStopped() {
     }
-//TODO actual processing
-    public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
 
-        return inputFrame.rgba();
+    public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
+        Mat result = new Mat();
+        Imgproc.threshold(inputFrame.rgba(), result, 128, 255, 3);
+
+        return result;
     }
 }
