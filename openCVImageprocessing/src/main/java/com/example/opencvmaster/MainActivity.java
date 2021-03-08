@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         Imgproc.rectangle(tMat, new Point(10,100), new Point(100,200), new Scalar(76,255,0));
 
 
-
         // Output
         Bitmap img_bitmap = Bitmap.createBitmap(img_result.cols(), img_result.rows(),Bitmap.Config.ARGB_8888);
         Utils.matToBitmap(img_result, img_bitmap);
