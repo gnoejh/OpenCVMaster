@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         // Input
         Mat img = null;
         try {
-            img = Utils.loadResource(getApplicationContext(), R.drawable.lena);
+            img = Utils.loadResource(getApplicationContext(), R.drawable.baboon);
         } catch (IOException e) {
             e.printStackTrace();
         }
