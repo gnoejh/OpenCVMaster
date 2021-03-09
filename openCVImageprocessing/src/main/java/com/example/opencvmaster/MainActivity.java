@@ -45,21 +45,10 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-//        Imgproc.cvtColor(img, img, Imgproc.COLOR_RGB2BGRA);
-//
-//        Mat img_result = img.clone();
-//
-//        // Image processing
-//        Imgproc.Canny(img, img_result, 80, 90);
-//
-//        Mat tMat = null;
-//        Log.v(TAG,"asdasd");
-//        Imgproc.rectangle(tMat, new Point(10,100), new Point(100,200), new Scalar(76,255,0));
-
         Random rand = new Random();
 
-//        Core.randu(img,100,255);
         Imgproc.line(img,new Point(rand.nextInt(100),rand.nextInt(100)),new Point(rand.nextInt(500),rand.nextInt(500)),new Scalar(rand.nextInt(255),rand.nextInt(255),rand.nextInt(255)),10);
+        Imgproc.cvtColor(img,img,Imgproc.COLOR_RGBA2BGRA);
 
         // Output
         Bitmap img_bitmap = Bitmap.createBitmap(img.cols(), img.rows(),Bitmap.Config.ARGB_8888);
