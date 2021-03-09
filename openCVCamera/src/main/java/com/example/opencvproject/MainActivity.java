@@ -79,11 +79,11 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
     public void onCameraViewStopped() {
     }
-//TODO actual processing
+
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         Mat rgba = inputFrame.rgba();
         Mat result = new Mat();
-        Imgproc.GaussianBlur(rgba, result, new Size(5,5), 30, 3);
+        Imgproc.GaussianBlur(rgba, result, new Size(7,7), 5, 5);
 
         return result;
     }

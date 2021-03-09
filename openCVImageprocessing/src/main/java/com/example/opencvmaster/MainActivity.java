@@ -53,10 +53,12 @@ public class MainActivity extends AppCompatActivity {
         //  Bilateral blur
 //        TODO
         //Imgproc.bilateralFilter(img, img_result, 10, 20, 5);
-        Imgproc.GaussianBlur(img, result, new Size(5,5), 30, 3);
+        Imgproc.GaussianBlur(img, result, new Size(7,7), 5, 5);
+        Imgproc.cvtColor(result,result,Imgproc.COLOR_RGBA2BGRA);
 
         Bitmap img_bitmap = Bitmap.createBitmap(result.cols(), result.rows(),Bitmap.Config.ARGB_8888);
         Utils.matToBitmap(result, img_bitmap);
+
         ImageView imageView = findViewById(R.id.id_image);
         imageView.setImageBitmap(img_bitmap);
     }
