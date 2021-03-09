@@ -25,6 +25,8 @@ import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
+import java.util.Random;
+
 
 //TODO create camera interface
 public class MainActivity extends Activity implements CameraBridgeViewBase.CvCameraViewListener2 {
@@ -127,23 +129,27 @@ public class MainActivity extends Activity implements CameraBridgeViewBase.CvCam
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         Mat rgba = inputFrame.rgba();
-        Size sizeRgba = rgba.size();
+//        Size sizeRgba = rgba.size();
+//
+//        Mat rgbaInnerWindow;
+//
+//        int rows = (int) sizeRgba.height;
+//        int cols = (int) sizeRgba.width;
+//
+//        int left = cols / 8;
+//        int top = rows / 8;
+//
+//        int width = cols * 3 / 4;
+//        int height = rows * 3 / 4;
+//
+//        mIntermediateMat = new Mat(); //TODO initialize
+//        rgbaInnerWindow = rgba.submat(top, top + height, left, left + width);
+//        Imgproc.Canny(rgba, mIntermediateMat, 80, 90);
+//        Imgproc.cvtColor(mIntermediateMat, rgba, Imgproc.COLOR_GRAY2BGRA, 4);
+        Random rand = new Random();
 
-        Mat rgbaInnerWindow;
-
-        int rows = (int) sizeRgba.height;
-        int cols = (int) sizeRgba.width;
-
-        int left = cols / 8;
-        int top = rows / 8;
-
-        int width = cols * 3 / 4;
-        int height = rows * 3 / 4;
-
-        mIntermediateMat = new Mat(); //TODO initialize
-        rgbaInnerWindow = rgba.submat(top, top + height, left, left + width);
-        Imgproc.Canny(rgba, mIntermediateMat, 80, 90);
-        Imgproc.cvtColor(mIntermediateMat, rgba, Imgproc.COLOR_GRAY2BGRA, 4);
+//        Core.randu(rgba,100,255);
+        Imgproc.line(rgba,new Point(rand.nextInt(100),rand.nextInt(100)),new Point(rand.nextInt(500),rand.nextInt(500)),new Scalar(rand.nextInt(255),rand.nextInt(255),rand.nextInt(255)),10);
 
         return rgba;
     }
