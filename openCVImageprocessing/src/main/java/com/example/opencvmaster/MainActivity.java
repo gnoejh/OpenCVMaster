@@ -37,27 +37,31 @@ public class MainActivity extends AppCompatActivity {
     public void convertImage(View v){
         // Input
         Mat img = null;
+        Mat result = new Mat();
         try {
             img = Utils.loadResource(getApplicationContext(), R.drawable.lena);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Imgproc.cvtColor(img, img, Imgproc.COLOR_RGB2BGRA);
-
-        Mat img_result = img.clone();
-
-        // Image processing
-        Imgproc.Canny(img, img_result, 80, 90);
-
-        Mat tMat = null;
-        Log.v(TAG,"asdasd");
-        Imgproc.rectangle(tMat, new Point(10,100), new Point(100,200), new Scalar(76,255,0));
-
+//        Imgproc.cvtColor(img, img, Imgproc.COLOR_RGB2BGRA);
+//
+//        Mat img_result = img.clone();
+//
+//        // Image processing
+//        Imgproc.Canny(img, img_result, 80, 90);
+//
+//        Mat tMat = null;
+//        Log.v(TAG,"asdasd");
+//        Imgproc.rectangle(tMat, new Point(10,100), new Point(100,200), new Scalar(76,255,0));
+//
+        float alpha = (float) 0.5;
+        float beta = (float) (1.0 - alpha);
+        img.convertTo(result,-1,alpha,beta);
 
         // Output
-        Bitmap img_bitmap = Bitmap.createBitmap(img_result.cols(), img_result.rows(),Bitmap.Config.ARGB_8888);
-        Utils.matToBitmap(img_result, img_bitmap);
+        Bitmap img_bitmap = Bitmap.createBitmap(result.cols(), result.rows(),Bitmap.Config.ARGB_8888);
+        Utils.matToBitmap(result, img_bitmap);
         ImageView imageView = findViewById(R.id.id_image);
         imageView.setImageBitmap(img_bitmap);
     }
