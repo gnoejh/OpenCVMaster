@@ -13,6 +13,10 @@ import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Mat;
+import org.opencv.core.Size;
+import org.opencv.imgproc.Imgproc;
+
+import java.util.Random;
 
 //TODO create camera interface
 public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
@@ -79,7 +83,14 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     }
 //TODO actual processing
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
+        Mat rgba = inputFrame.rgba();
+        Random rand = new Random();
+        Size size = new Size(rand.nextInt(10)+1,rand.nextInt(10)+1);
+        Mat element =  Imgproc.getStructuringElement(Imgproc.MORPH_RECT,
+                size);
 
-        return inputFrame.rgba();
+//        // erosion
+        Imgproc.erode(rgba, rgba, element);
+        return rgba;
     }
 }

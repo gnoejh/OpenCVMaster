@@ -19,6 +19,7 @@ import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
 import java.io.IOException;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
         //Imgproc.Canny(img, img_result, 80, 90);
 
         // structures
-
-        Size size = new Size(10,2);
+        Random rand = new Random();
+        Size size = new Size(rand.nextInt(10)+1,rand.nextInt(10)+1);
         Mat element =  Imgproc.getStructuringElement(Imgproc.MORPH_RECT,
                size);
 
