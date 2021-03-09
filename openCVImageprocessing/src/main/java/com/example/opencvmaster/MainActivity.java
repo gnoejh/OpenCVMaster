@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import org.opencv.android.OpenCVLoader;
 import org.opencv.android.Utils;
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
 import org.opencv.core.Scalar;
@@ -36,28 +37,35 @@ public class MainActivity extends AppCompatActivity {
 
     public void convertImage(View v){
         // Input
-        Mat img = null;
+        Mat img1 = null;
+        Mat img2 = null;
+        Mat result = new Mat();
         try {
-            img = Utils.loadResource(getApplicationContext(), R.drawable.lena);
+            img1 = Utils.loadResource(getApplicationContext(), R.drawable.linuxlogo);
+            img2 = Utils.loadResource(getApplicationContext(), R.drawable.windowslogo);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Imgproc.cvtColor(img, img, Imgproc.COLOR_RGB2BGRA);
+//        Imgproc.cvtColor(img, img, Imgproc.COLOR_RGB2BGRA);
+//
+//        Mat img_result = img.clone();
+//
+//        // Image processing
+//        Imgproc.Canny(img, img_result, 80, 90);
+//
+//        Mat tMat = null;
+//        Log.v(TAG,"asdasd");
+//        Imgproc.rectangle(tMat, new Point(10,100), new Point(100,200), new Scalar(76,255,0));
 
-        Mat img_result = img.clone();
+        float alpha = (float) 0.5;
+        float beta = (float) (1.0 - alpha);
 
-        // Image processing
-        Imgproc.Canny(img, img_result, 80, 90);
-
-        Mat tMat = null;
-        Log.v(TAG,"asdasd");
-        Imgproc.rectangle(tMat, new Point(10,100), new Point(100,200), new Scalar(76,255,0));
-
+        Core.addWeighted(img1,alpha,img2,beta,0.0,result);
 
         // Output
-        Bitmap img_bitmap = Bitmap.createBitmap(img_result.cols(), img_result.rows(),Bitmap.Config.ARGB_8888);
-        Utils.matToBitmap(img_result, img_bitmap);
+        Bitmap img_bitmap = Bitmap.createBitmap(result.cols(), result.rows(),Bitmap.Config.ARGB_8888);
+        Utils.matToBitmap(result, img_bitmap);
         ImageView imageView = findViewById(R.id.id_image);
         imageView.setImageBitmap(img_bitmap);
     }

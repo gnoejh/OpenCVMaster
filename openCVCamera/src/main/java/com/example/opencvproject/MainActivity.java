@@ -96,9 +96,16 @@ public class MainActivity extends Activity implements CameraBridgeViewBase.CvCam
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         Mat rgba = inputFrame.rgba();
         mIntermediateMat = new Mat();
+        Mat result = new Mat();
+        Mat edge = new Mat();
 
         Imgproc.Canny(rgba, mIntermediateMat, 80, 90);
-        Imgproc.cvtColor(mIntermediateMat, rgba, Imgproc.COLOR_GRAY2BGRA, 4);
+        Imgproc.cvtColor(mIntermediateMat, edge, Imgproc.COLOR_GRAY2BGRA, 4);
+
+        float alpha = (float) 0.5;
+        float beta = (float) (1.0 - alpha);
+
+        Core.addWeighted(rgba,alpha,edge,beta,0.0,rgba);
 
         return rgba;
     }
