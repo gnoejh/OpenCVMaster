@@ -13,6 +13,8 @@ import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Mat;
+import org.opencv.core.Size;
+import org.opencv.imgproc.Imgproc;
 
 //TODO create camera interface
 public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
@@ -79,7 +81,10 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     }
 //TODO actual processing
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
+        Mat rgba = inputFrame.rgba();
+        Mat result = new Mat();
+        Imgproc.GaussianBlur(rgba, result, new Size(5,5), 30, 3);
 
-        return inputFrame.rgba();
+        return result;
     }
 }
