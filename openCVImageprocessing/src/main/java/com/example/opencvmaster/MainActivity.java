@@ -43,21 +43,23 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        Imgproc.cvtColor(img, img, Imgproc.COLOR_RGB2BGRA);
+//        Imgproc.cvtColor(img, img, Imgproc.COLOR_RGB2BGRA);
+//
+//        Mat img_result = img.clone();
+//
+//        // Image processing
+//        Imgproc.Canny(img, img_result, 80, 90);
+//
+//        Mat tMat = null;
+//        Log.v(TAG,"asdasd");
+//        Imgproc.rectangle(tMat, new Point(10,100), new Point(100,200), new Scalar(76,255,0));
 
-        Mat img_result = img.clone();
-
-        // Image processing
-        Imgproc.Canny(img, img_result, 80, 90);
-
-        Mat tMat = null;
-        Log.v(TAG,"asdasd");
-        Imgproc.rectangle(tMat, new Point(10,100), new Point(100,200), new Scalar(76,255,0));
-
+        Imgproc.line(img,new Point(100,100),new Point(300,400),new Scalar(0,0,255),5);
+        Imgproc.circle(img,new Point(200,300),50,new Scalar(255,0,0),10);
 
         // Output
-        Bitmap img_bitmap = Bitmap.createBitmap(img_result.cols(), img_result.rows(),Bitmap.Config.ARGB_8888);
-        Utils.matToBitmap(img_result, img_bitmap);
+        Bitmap img_bitmap = Bitmap.createBitmap(img.cols(), img.rows(),Bitmap.Config.ARGB_8888);
+        Utils.matToBitmap(img, img_bitmap);
         ImageView imageView = findViewById(R.id.id_image);
         imageView.setImageBitmap(img_bitmap);
     }

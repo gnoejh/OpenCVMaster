@@ -95,10 +95,13 @@ public class MainActivity extends Activity implements CameraBridgeViewBase.CvCam
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         Mat rgba = inputFrame.rgba();
-        mIntermediateMat = new Mat();
+//        mIntermediateMat = new Mat();
+//
+//        Imgproc.Canny(rgba, mIntermediateMat, 80, 90);
+//        Imgproc.cvtColor(mIntermediateMat, rgba, Imgproc.COLOR_GRAY2BGRA, 4);
 
-        Imgproc.Canny(rgba, mIntermediateMat, 80, 90);
-        Imgproc.cvtColor(mIntermediateMat, rgba, Imgproc.COLOR_GRAY2BGRA, 4);
+        Imgproc.line(rgba,new Point(100,100),new Point(300,400),new Scalar(0,0,255),5);
+        Imgproc.circle(rgba,new Point(200,300),50,new Scalar(255,0,0),10);
 
         return rgba;
     }
