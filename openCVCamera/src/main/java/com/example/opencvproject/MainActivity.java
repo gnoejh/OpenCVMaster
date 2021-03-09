@@ -151,6 +151,7 @@ public class MainActivity extends Activity implements CameraBridgeViewBase.CvCam
 //        Core.randu(rgba,100,255);
         Imgproc.line(rgba,new Point(rand.nextInt(100),rand.nextInt(100)),new Point(rand.nextInt(500),rand.nextInt(500)),new Scalar(rand.nextInt(255),rand.nextInt(255),rand.nextInt(255)),10);
 
+
         return rgba;
     }
 }
