@@ -16,12 +16,16 @@ import android.widget.Toast;
 
 import org.opencv.android.OpenCVLoader;
 import org.opencv.android.Utils;
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
 import org.opencv.core.Scalar;
+import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
 import java.io.IOException;
+
+import static org.opencv.core.CvType.CV_8UC4;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,17 +47,16 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        Imgproc.cvtColor(img, img, Imgproc.COLOR_RGB2BGRA);
+        Size sizeRgba = img.size();
 
-        Mat img_result = img.clone();
+        // Mat
+//        Mat mImg = Mat.ones(sizeRgba, CV_8UC4);
+//        Mat mImg = Mat.zeros(sizeRgba,CV_8UC4);
+//        Mat mImg = Mat.eye(sizeRgba,CV_8UC4);
 
-        // Image processing
-        Imgproc.Canny(img, img_result, 80, 90);
-
-        Mat tMat = null;
-        Log.v(TAG,"asdasd");
-        Imgproc.rectangle(tMat, new Point(10,100), new Point(100,200), new Scalar(76,255,0));
-
+        // Random Mat
+        Mat img_result = new Mat(sizeRgba, CV_8UC4);
+        Core.randu(img_result, 0, 255);
 
 
         // Output

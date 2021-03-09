@@ -130,20 +130,15 @@ public class MainActivity extends Activity implements CameraBridgeViewBase.CvCam
         Mat rgba = inputFrame.rgba();
         Size sizeRgba = rgba.size();
 
-
-//        mIntermediateMat = new Mat(); //TODO initialize
-//        Imgproc.Canny(rgba, mIntermediateMat, 80, 90);
-//        Imgproc.cvtColor(mIntermediateMat, rgba, Imgproc.COLOR_GRAY2BGRA, 4);
-
           // Mat
 //        Mat mImg = Mat.ones(sizeRgba, CV_8UC4);
 //        Mat mImg = Mat.zeros(sizeRgba,CV_8UC4);
 //        Mat mImg = Mat.eye(sizeRgba,CV_8UC4);
 
         // Random Mat
-        Mat mImg = new Mat(sizeRgba, CV_8UC4);
-        Core.randu(mImg, 0, 255);
+        Mat img = new Mat(sizeRgba, CV_8UC4);
+        Core.randu(img, 0, 255);
 
-        return mImg;
+        return img;
     }
 }
