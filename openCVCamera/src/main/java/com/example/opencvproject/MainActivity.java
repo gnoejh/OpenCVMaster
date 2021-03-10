@@ -95,6 +95,16 @@ public class MainActivity extends Activity implements CameraBridgeViewBase.CvCam
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         Mat rgba = inputFrame.rgba();
+        int morph_size = 2;
+
+        Mat element = Imgproc.getStructuringElement(0,new Size(2*morph_size+1,2*morph_size+1),new Point(morph_size,morph_size));
+        //Opening: MORPH_OPEN : 2
+        //Closing: MORPH_CLOSE: 3
+        //Gradient: MORPH_GRADIENT: 4
+        //Top Hat: MORPH_TOPHAT: 5
+        //Black Hat: MORPH_BLACKHAT: 6
+        Imgproc.morphologyEx(rgba,rgba,2,element);
+//        Imgproc.cvtColor(rgba,rgba,Imgproc.COLOR_RGBA2BGRA);
 
         return rgba;
     }

@@ -20,6 +20,7 @@ import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
 import org.opencv.core.Scalar;
+import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
 import java.io.IOException;
@@ -44,9 +45,19 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+//
         Mat result = new Mat();
-        Imgproc.cvtColor(img,result,Imgproc.COLOR_RGBA2BGRA);
+
+        int morph_size = 2;
+
+        Mat element = Imgproc.getStructuringElement(0,new Size(2*morph_size+1,2*morph_size+1),new Point(morph_size,morph_size));
+        //Opening: MORPH_OPEN : 2
+        //Closing: MORPH_CLOSE: 3
+        //Gradient: MORPH_GRADIENT: 4
+        //Top Hat: MORPH_TOPHAT: 5
+        //Black Hat: MORPH_BLACKHAT: 6
+        Imgproc.morphologyEx(img,result,2,element);
+        Imgproc.cvtColor(result,result,Imgproc.COLOR_RGBA2BGRA);
 
         // Output
         Bitmap img_bitmap = Bitmap.createBitmap(result.cols(), result.rows(),Bitmap.Config.ARGB_8888);
