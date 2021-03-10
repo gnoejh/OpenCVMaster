@@ -127,29 +127,22 @@ public class MainActivity extends Activity implements CameraBridgeViewBase.CvCam
         Mat rgba = inputFrame.rgba();
         Size sizeRgba = rgba.size();
 
-        Mat rgbaInnerWindow;
-
         int rows = (int) sizeRgba.height;
         int cols = (int) sizeRgba.width;
 
-        int left = cols / 8;
-        int top = rows / 8;
-
-        int width = cols * 3 / 4;
-        int height = rows * 3 / 4;
-
-//        mIntermediateMat = new Mat(); //TODO initialize
-//        rgbaInnerWindow = rgba.submat(top, top + height, left, left + width);
-//        Imgproc.Canny(rgba, mIntermediateMat, 80, 90);
-//        Imgproc.cvtColor(mIntermediateMat, rgba, Imgproc.COLOR_GRAY2BGRA, 4);
-
         // Mask
-        Mat kern = new Mat(3,3,CvType.CV_8S);
+//        Mat kern = new Mat(3,3,CvType.CV_8S);
+//        int row = 0; int col = 0;
+//        kern.put(row,col,0,-1,0,-1,5,-1,0,-1,0);
+//        Mat mImg = new Mat();
+//        Imgproc.filter2D(rgba,mImg,rgba.depth(),kern);
+        Mat kern = new Mat(3,3, CvType.CV_8S);
         int row = 0; int col = 0;
         kern.put(row,col,0,-1,0,-1,5,-1,0,-1,0);
-        Mat mImg = new Mat();
-        Imgproc.filter2D(rgba,mImg,rgba.depth(),kern);
+        Mat img_result = new Mat();
+        Imgproc.filter2D(rgba,img_result,rgba.depth(),kern);
+//        Imgproc.cvtColor(img_result, img_result, Imgproc.COLOR_RGB2BGRA);
 
-        return rgba;
+        return img_result;
     }
 }
