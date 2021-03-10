@@ -93,14 +93,11 @@ public class MainActivity extends Activity implements CameraBridgeViewBase.CvCam
 
     public void onCameraViewStopped() {
     }
-//TODO actual processing
+
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         Mat rgba = inputFrame.rgba();
-//        mIntermediateMat = new Mat();
-//
-//        Imgproc.Canny(rgba, mIntermediateMat, 80, 90);
-//        Imgproc.cvtColor(mIntermediateMat, rgba, Imgproc.COLOR_GRAY2BGRA, 4);
+
 
         Mat filterImage = rgba.clone();
         Imgproc.cvtColor(rgba,filterImage,Imgproc.COLOR_RGB2YCrCb);
