@@ -25,6 +25,8 @@ import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
+import java.util.ArrayList;
+
 
 //TODO create camera interface
 public class MainActivity extends Activity implements CameraBridgeViewBase.CvCameraViewListener2 {
@@ -99,6 +101,17 @@ public class MainActivity extends Activity implements CameraBridgeViewBase.CvCam
 //
 //        Imgproc.Canny(rgba, mIntermediateMat, 80, 90);
 //        Imgproc.cvtColor(mIntermediateMat, rgba, Imgproc.COLOR_GRAY2BGRA, 4);
+
+        Mat filterImage = rgba.clone();
+        Imgproc.cvtColor(rgba,filterImage,Imgproc.COLOR_RGB2YCrCb);
+        java.util.List<Mat> filterImageList = new ArrayList<Mat>(3);
+        Core.split(filterImage,filterImageList);
+        Mat luminance = filterImageList.get(0);
+        Imgproc.equalizeHist(luminance,luminance);
+        filterImageList.set(0,luminance);
+        Core.merge(filterImageList,filterImage);
+        Imgproc.cvtColor(filterImage,rgba, Imgproc.COLOR_YCrCb2BGR);
+
 
         return rgba;
     }

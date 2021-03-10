@@ -23,6 +23,7 @@ import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,22 +49,33 @@ public class MainActivity extends AppCompatActivity {
 //        Imgproc.cvtColor(img, img, Imgproc.COLOR_RGB2BGRA);
 
         Mat ycrcb = null;
+//
+//        Imgproc.cvtColor(img,ycrcb,Imgproc.COLOR_RGB2YCrCb);
+//Log.v(TAG,"saas");
+//        List<Mat> channels = null;
+//        Core.split(ycrcb,channels);
+//
+//        Imgproc.equalizeHist(channels.get(0), channels.get(0));
+//
+//        Mat result = null;
+//        Core.merge(channels,ycrcb);
+//
+//        Imgproc.cvtColor(ycrcb,result,Imgproc.COLOR_YCrCb2BGR);
 
-        Imgproc.cvtColor(img,ycrcb,Imgproc.COLOR_RGB2YCrCb);
-Log.v(TAG,"saas");
-        List<Mat> channels = null;
-        Core.split(ycrcb,channels);
+        Mat filterImage = img.clone();
+        Imgproc.cvtColor(img,filterImage,Imgproc.COLOR_RGB2YCrCb);
+        java.util.List<Mat> filterImageList = new ArrayList<Mat>(3);
+        Core.split(filterImage,filterImageList);
+        Mat luminance = filterImageList.get(0);
+        Imgproc.equalizeHist(luminance,luminance);
+        filterImageList.set(0,luminance);
+        Core.merge(filterImageList,filterImage);
+        Imgproc.cvtColor(filterImage,img, Imgproc.COLOR_YCrCb2BGR);
 
-        Imgproc.equalizeHist(channels.get(0), channels.get(0));
-
-        Mat result = null;
-        Core.merge(channels,ycrcb);
-
-        Imgproc.cvtColor(ycrcb,result,Imgproc.COLOR_YCrCb2BGR);
 
         // Output
-        Bitmap img_bitmap = Bitmap.createBitmap(result.cols(), result.rows(),Bitmap.Config.ARGB_8888);
-        Utils.matToBitmap(result, img_bitmap);
+        Bitmap img_bitmap = Bitmap.createBitmap(img.cols(), img.rows(),Bitmap.Config.ARGB_8888);
+        Utils.matToBitmap(img, img_bitmap);
         ImageView imageView = findViewById(R.id.id_image);
         imageView.setImageBitmap(img_bitmap);
     }
