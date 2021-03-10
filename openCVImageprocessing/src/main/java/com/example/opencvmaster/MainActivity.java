@@ -45,21 +45,8 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-//        Imgproc.cvtColor(img, img, Imgproc.COLOR_RGB2BGRA);
-
-        Mat ycrcb = null;
-
-        Imgproc.cvtColor(img,ycrcb,Imgproc.COLOR_RGB2YCrCb);
-Log.v(TAG,"saas");
-        List<Mat> channels = null;
-        Core.split(ycrcb,channels);
-
-        Imgproc.equalizeHist(channels.get(0), channels.get(0));
-
-        Mat result = null;
-        Core.merge(channels,ycrcb);
-
-        Imgproc.cvtColor(ycrcb,result,Imgproc.COLOR_YCrCb2BGR);
+        Mat result = new Mat();
+        Imgproc.cvtColor(img,result,Imgproc.COLOR_RGBA2BGRA);
 
         // Output
         Bitmap img_bitmap = Bitmap.createBitmap(result.cols(), result.rows(),Bitmap.Config.ARGB_8888);
