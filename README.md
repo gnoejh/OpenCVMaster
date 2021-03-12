@@ -1,2 +1,2 @@
 # OpenCVMaster
-Android-OpenCV master learning
+Teaching Android Programming in one repository, including OpenCV and Tensorflow.
